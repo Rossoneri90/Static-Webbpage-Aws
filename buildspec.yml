@@ -1,1 +1,17 @@
-
+version: 0.2
+phases:
+  pre_build:
+    commands:
+      - echo Restore started on `date`
+      - dotnet restore N_Code.csproj
+  build:
+    commands:
+      - echo Build started on `date`
+      - dotnet publish -c release -o ./build_output N_Code.csproj
+  post_build:
+    commands:
+      - echo "Deployed to s3"
+artifacts:
+  files:
+    - '**/*'
+    - ./build_output
