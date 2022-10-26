@@ -3,11 +3,11 @@ phases:
   pre_build:
     commands:
       - echo Restore started on `date`
-      - dotnet restore N_Code.csproj
+      - dotnet restore Hemsida.csproj
   build:
     commands:
       - echo Build started on `date`
-      - dotnet publish -c release -o ./build_output N_Code.csproj
+      - dotnet publish -c release -o ./build_output Hemsida.csproj
   post_build:
     commands:
       - echo "Deployed to s3"
@@ -15,3 +15,4 @@ artifacts:
   files:
     - '**/*'
     - ./build_output
+   
